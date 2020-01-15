@@ -1,6 +1,11 @@
 #include "Serial.h"
 
 namespace serial {
+
+            /*****************************************************
+             *                   OBinaryFile                     *
+             *****************************************************/
+
     OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode=Truncate)
         :  m_file(fopen(filename.c_str(),mode==Truncate?"w":"a")){}
 
@@ -18,6 +23,67 @@ namespace serial {
             return *this;
         }
 
+    std::size_t OBinaryFile::write(const std::byte* data, std::size_t size){
+        return fwrite(data,size,size,m_file);
+        
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int8_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int16_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint32_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int32_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint64_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int64_t x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, char x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, float x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, double x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, bool x){
+        return file<<x;
+    }
+
+    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, const std::string& x){
+        return file<<x;
+    }
+    
+
+            /*****************************************************
+             *                   IBinaryFile                     *
+             *****************************************************/
 
     IBinaryFile::IBinaryFile(const std::string& filename)
         : m_file(fopen(filename.c_str(),"r")) {}
@@ -36,6 +102,62 @@ namespace serial {
             return *this;
         }
 
+    std::size_t IBinaryFile::read(std::byte* data, std::size_t size){
+        return fread(data,size,size,m_file);
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint16_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int16_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint32_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int32_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint64_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int64_t& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, char& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, float& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, double& x){
+        return file>>x;
+    }
+
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, bool& x){
+        return file>>x;
+    }
     
-    
+    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, std::string& x){
+        return file>>x;
+    }
+
+
+
 }
