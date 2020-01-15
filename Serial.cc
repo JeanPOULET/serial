@@ -6,7 +6,7 @@ namespace serial {
              *                   OBinaryFile                     *
              *****************************************************/
 
-    OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode=Truncate)
+    OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode)
         :  m_file(fopen(filename.c_str(),mode==Truncate?"w":"a")){}
 
     OBinaryFile::~OBinaryFile()
@@ -17,7 +17,7 @@ namespace serial {
     OBinaryFile::OBinaryFile(OBinaryFile&& other) noexcept
         : m_file(std::exchange(other.m_file,nullptr)){}    
 
-    OBinaryFile::OBinaryFile& OBinaryFile::operator=(OBinaryFile&& other) noexcept
+    OBinaryFile& OBinaryFile::operator=(OBinaryFile&& other) noexcept
         {
             std::swap(m_file,other.m_file);
             return *this;
@@ -28,55 +28,55 @@ namespace serial {
         
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int8_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, int8_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int16_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, int16_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint32_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, uint32_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int32_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, int32_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, uint64_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, uint64_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, int64_t x){
+    OBinaryFile& operator<<(OBinaryFile& file, int64_t x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, char x){
+    OBinaryFile& operator<<(OBinaryFile& file, char x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, float x){
+    OBinaryFile& operator<<(OBinaryFile& file, float x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, double x){
+    OBinaryFile& operator<<(OBinaryFile& file, double x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, bool x){
+    OBinaryFile& operator<<(OBinaryFile& file, bool x){
         return file<<x;
     }
 
-    OBinaryFile::OBinaryFile& operator<<(OBinaryFile& file, const std::string& x){
+    OBinaryFile& operator<<(OBinaryFile& file, const std::string& x){
         return file<<x;
     }
     
@@ -96,7 +96,7 @@ namespace serial {
     IBinaryFile::IBinaryFile(IBinaryFile&& other) noexcept
         : m_file(std::exchange(other.m_file,nullptr)){}
 
-    IBinaryFile::IBinaryFile& IBinaryFile::operator=(IBinaryFile&& other) noexcept
+    IBinaryFile& IBinaryFile::operator=(IBinaryFile&& other) noexcept
         {
             std::swap(m_file,other.m_file);
             return *this;
@@ -106,55 +106,55 @@ namespace serial {
         return fread(data,size,size,m_file);
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint16_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, uint16_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int16_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, int16_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint32_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, uint32_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int32_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, int32_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, uint64_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, uint64_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, int64_t& x){
+    IBinaryFile& operator>>(IBinaryFile& file, int64_t& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, char& x){
+    IBinaryFile& operator>>(IBinaryFile& file, char& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, float& x){
+    IBinaryFile& operator>>(IBinaryFile& file, float& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, double& x){
+    IBinaryFile& operator>>(IBinaryFile& file, double& x){
         return file>>x;
     }
 
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, bool& x){
+    IBinaryFile& operator>>(IBinaryFile& file, bool& x){
         return file>>x;
     }
     
-    IBinaryFile::IBinaryFile& operator>>(IBinaryFile& file, std::string& x){
+    IBinaryFile& operator>>(IBinaryFile& file, std::string& x){
         return file>>x;
     }
 
