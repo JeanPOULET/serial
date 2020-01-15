@@ -7,7 +7,12 @@ namespace serial {
              *****************************************************/
 
     OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode)
-        :  m_file(fopen(filename.c_str(),mode==Truncate?"w":"a")){}
+        :  m_file(fopen(filename.c_str(),mode==Truncate?"w":"a"))
+        {
+            if(nullptr == m_file ){
+                throw std::runtime_error("ca marche po");
+            }
+        }
 
     OBinaryFile::~OBinaryFile()
        {
@@ -24,19 +29,21 @@ namespace serial {
         }
 
     std::size_t OBinaryFile::write(const std::byte* data, std::size_t size){
-        return fwrite(data,size,size,m_file);
+        return fwrite(data,sizeof(std::byte),size,m_file);
         
     }
 
-    OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
-        return file<<x;
+    serial::OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
+        std::byte b = std::byte(x); 
+        file.write(&b,1);
+        return file; 
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, int8_t x){
         return file<<x;
     }
 
-    OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+    serial::OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
         return file<<x;
     }
 
@@ -86,7 +93,12 @@ namespace serial {
              *****************************************************/
 
     IBinaryFile::IBinaryFile(const std::string& filename)
-        : m_file(fopen(filename.c_str(),"r")) {}
+        : m_file(fopen(filename.c_str(),"r"))
+        {
+            if(nullptr == m_file){
+                throw std::runtime_error("ca lit po");
+            }
+        }
 
     IBinaryFile::~IBinaryFile()
         {
@@ -103,11 +115,13 @@ namespace serial {
         }
 
     std::size_t IBinaryFile::read(std::byte* data, std::size_t size){
-        return fread(data,size,size,m_file);
+        return fread(data,sizeof(std::byte),size,m_file);
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
-        return file>>x;
+        std::byte b = std::byte(x);
+        file.read(&b,sizeof(uint8_t));
+        return file;
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
