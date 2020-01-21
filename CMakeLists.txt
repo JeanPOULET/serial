@@ -23,7 +23,7 @@ target_compile_features(serial0
 set_target_properties(serial0
   PROPERTIES
     CXX_EXTENSIONS OFF
-    LINK_FLAGS "-fsanitize=address,undefined"
+    LINK_FLAGS "-fsanitize=address,undefined "
 )
 
 add_executable(testSerial

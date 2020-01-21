@@ -2,7 +2,7 @@
 
 #include "gtest/gtest.h"
 
-TEST(Output, first){
+TEST(Read, uint8){
     serial::OBinaryFile obinary("fichou");
     uint8_t voiture =75; 
     obinary << voiture;
@@ -10,7 +10,18 @@ TEST(Output, first){
     serial::IBinaryFile ibinary("fichou");
     uint8_t lecture;
     ibinary>>lecture;
-    printf("%d lecture",lecture);
+    printf("lecture = %d\n",lecture);
+}
+
+TEST(Output, char){
+    serial::OBinaryFile obinary("ficCar");
+    char voiture ='V'; 
+    obinary << voiture;
+
+    serial::IBinaryFile ibinary("ficCar");
+    char lecture;
+    ibinary>>lecture;
+    printf("lecture = %c\n",lecture);
 }
 
 int main(int argc, char* argv[]) {
