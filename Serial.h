@@ -112,7 +112,8 @@ namespace serial {
     file<<lg;
     T v;
     for(uint32_t i=0; i<lg;++i){
-        file<<v;
+      v = x[i];
+      file<<v;
 
     }
     return file;
