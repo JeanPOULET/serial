@@ -1177,6 +1177,126 @@ TEST(Read, map_bool){
 	
 }
 
+											/************************************
+											 * 				SET					*
+											 ************************************/
+TEST(Read, set_uint8){
+	std::set<uint8_t> setEntree = {1,2,3};
+	std::set<uint8_t> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_int8){
+	std::set<int8_t> setEntree = {2,9,-0};
+	std::set<int8_t> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_uint64){
+	std::set<uint64_t> setEntree = {11111111111111, 2222222222, 5};
+	std::set<uint64_t> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_int64){
+	std::set<int64_t> setEntree = {11111111111, -22222222222, -0};
+	std::set<int64_t> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_string){
+	std::set<std::string> setEntree = {"Seum seum seum", "Vive Latex", "Scheme meilleur langage"};
+	std::set<std::string> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_char){
+	std::set<char> setEntree = {'8', '*', 'A'};
+	std::set<char> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
+}
+
+TEST(Read, set_bool){
+	std::set<bool> setEntree = {true, true, false};
+	std::set<bool, bool> setLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << setEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>setLu;
+	}
+	EXPECT_EQ(setEntree.size(), setLu.size());
+	
+}
 
 int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
