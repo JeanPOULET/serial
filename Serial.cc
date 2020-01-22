@@ -289,10 +289,14 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, std::string& x){
         int32_t lg;
         std::string st;
+        
         file >>lg;
         for(int32_t i=0; i<lg;++i){
-            file>>st;
+            char c;
+            file>>c;
+            st.push_back(c);
         }
+        x=st;
         return file;
     }
 
