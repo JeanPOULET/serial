@@ -252,7 +252,7 @@ namespace serial {
 
     IBinaryFile& operator>>(IBinaryFile& file, float& x){
         uint32_t u;
-        std::memcpy(&u,&x,sizeof(float));
+        std::memcpy(&x,&u,sizeof(float));
         file>>x;
         return file;
     }
