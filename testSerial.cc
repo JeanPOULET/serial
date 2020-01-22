@@ -933,7 +933,7 @@ TEST(Read, vector_bool){
 }
 
 											/************************************
-											 * 				ARRAY				*
+											 * 				map				*
 											 ************************************/
 TEST(Read, array_uint8){
 	std::array<uint8_t, 3> arrayEntree = {1,2,3};
@@ -1046,6 +1046,144 @@ TEST(Read, array_int64){
 		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
 	}
 }
+
+											/************************************
+											 * 				MAP					*
+											 ************************************/
+TEST(Read, map_uint8){
+	std::map<uint8_t, uint8_t> mapEntree;
+	mapEntree[2] = 8;
+	mapEntree[9] = 0;
+	mapEntree[5] = 5;
+	std::map<uint8_t, uint8_t> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_int8){
+	std::map<int8_t, int8_t> mapEntree;
+	mapEntree[2] = 8;
+	mapEntree[9] = -0;
+	mapEntree[-5] = -5;
+	std::map<int8_t, int8_t> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_uint64){
+	std::map<uint64_t, uint64_t> mapEntree;
+	mapEntree[2] = 11111111111111;
+	mapEntree[2222222222] = 22222222222;
+	mapEntree[5] = 5;
+	std::map<uint64_t, uint64_t> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_int64){
+	std::map<int64_t, int64_t> mapEntree;
+	mapEntree[11111111111] = 8;
+	mapEntree[-9] = -22222222222;
+	mapEntree[0] = -0;
+	std::map<int64_t, int64_t> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_string){
+	std::map<std::string, std::string> mapEntree;
+	mapEntree["Salut"] = "Bonjour";
+	mapEntree["Ca va ?"] = "Imotep";
+	mapEntree["Le lion ne s'associe pas avec le cafard"] = "Eh les romains vous êtes des romaines";
+	std::map<std::string, std::string> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_char){
+	std::map<char, char> mapEntree;
+	mapEntree['4'] = '2';
+	mapEntree['S'] = 's';
+	mapEntree['-'] = 'é';
+	std::map<char, char> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+TEST(Read, map_bool){
+	std::map<bool, bool> mapEntree;
+	mapEntree[false] = true;
+	mapEntree[true] = true;
+	mapEntree[false] = true;
+	std::map<bool, bool> mapLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << mapEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>mapLu;
+	}
+	EXPECT_EQ(mapEntree.size(), mapLu.size());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+}
+
+
 int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
