@@ -31,7 +31,7 @@ TEST(Read, int8){
     EXPECT_EQ(lecture,ecriture);
   }
 }
-TEST(Output, char){
+TEST(Read, char){
 	char charEntree ='V'; 
 	char CharLu;
   	{

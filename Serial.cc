@@ -47,6 +47,11 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+        std::byte b[2];
+        b[0] = std::byte(x&0xff);
+        b[1] = std::byte(x&0xff);
+        file.write(&b[0],1);
+        file.write(&b[1],1);
         return file;
     }
 
@@ -138,6 +143,10 @@ namespace serial {
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, uint16_t& x){
+        std::byte b[2];
+        file.read(&b[0],1);
+        file.read(&b[1],1);
+        x = (uint16_t) b[1]<<8 | (uint16_t)b[0]<<8;
         return file;
     }
     
