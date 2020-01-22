@@ -146,6 +146,12 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, const std::string& x){
+        int32_t lg=static_cast<int32_t>(x.length());
+        file<<lg;
+        for(int32_t i=0;i<lg;++i){
+            char c = x[i];
+            file<<c;
+        }
         return file;
     }
     
@@ -248,7 +254,6 @@ namespace serial {
 
     IBinaryFile& operator>>(IBinaryFile& file, char& x){
         std::byte b;
-        file.read(&b,1);
         x=static_cast<char>(b);
         return file;
     }
