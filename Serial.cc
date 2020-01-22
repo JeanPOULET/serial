@@ -300,7 +300,4 @@ namespace serial {
         x=st;
         return file;
     }
-
-
-
 }

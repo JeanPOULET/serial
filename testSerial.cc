@@ -369,7 +369,7 @@ TEST(Read, double_Random){
 }
 
 TEST(Read, double_Max){
-	double ecriture = std::numeric_limits<double>::min(); 
+	double ecriture = std::numeric_limits<double>::max(); 
 	double lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
