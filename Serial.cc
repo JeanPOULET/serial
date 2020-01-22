@@ -189,14 +189,14 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
         std::byte b;
         file.read(&b,1); 
-        x = (uint8_t)b;
+        x = static_cast<uint8_t>(b);
         return file;
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
         std::byte b;
         file.read(&b,1);
-        x = int8_t(b);
+        x = static_cast<int8_t>(b);
         return file;
     }
 
@@ -204,7 +204,7 @@ namespace serial {
         std::byte b[2];
         file.read(&b[0],1);
         file.read(&b[1],1);
-        x = (uint16_t) b[0]<<8 | (uint16_t)b[1];
+        x = static_cast<uint16_t> (b[0])<<8 | static_cast<uint16_t>(b[1]);
         return file;
     }
 
@@ -212,7 +212,7 @@ namespace serial {
         std::byte b[2];
         file.read(&b[0],1);
         file.read(&b[1],1);
-        x = (int16_t) b[0]<<8 | (int16_t)b[1];
+        x = static_cast<int16_t> (b[0])<<8 | static_cast<int16_t>(b[1]);
         return file;
     }
 
@@ -240,9 +240,9 @@ namespace serial {
             file.read(&b[i],1);
         }
         x = 
-        std::to_integer<uint64_t> (b[0])<<56 |std::to_integer<uint64_t> (b[1])<<48 |std::to_integer<uint64_t> (b[2])<<40 |
-        std::to_integer<uint64_t> (b[3])<<32 |std::to_integer<uint64_t> (b[4])<<24 | std::to_integer<uint64_t> (b[5])<<16 |
-        std::to_integer<uint64_t>(b[6])<<8 | std::to_integer<uint64_t> (b[7]);
+        std::to_integer<uint64_t> (b[0])<<56 | std::to_integer<uint64_t> (b[1])<<48 | std::to_integer<uint64_t> (b[2])<<40 |
+        std::to_integer<uint64_t> (b[3])<<32 | std::to_integer<uint64_t> (b[4])<<24 | std::to_integer<uint64_t> (b[5])<<16 |
+        std::to_integer<uint64_t>(b[6])<<8   | std::to_integer<uint64_t> (b[7]);
         return file;
     }
 
@@ -251,7 +251,10 @@ namespace serial {
         for(int i=0;i<8;++i){
             file.read(&b[i],1);
         }
-        x = (int64_t) b[0]<<56 |(int64_t) b[1]<<48 |(int64_t) b[2]<<40 |(int64_t) b[3]<<32 |(int64_t) b[4]<<24 | (int64_t) b[5]<<16 | (int64_t) b[6]<<8 | (int64_t) b[7];
+        x =
+        std::to_integer<int64_t> (b[0])<<56 | std::to_integer<int64_t> (b[1])<<48 | std::to_integer<int64_t> (b[2])<<40 |
+        std::to_integer<int64_t> (b[3])<<32 | std::to_integer<int64_t> (b[4])<<24 | std::to_integer<int64_t> (b[5])<<16 |
+        std::to_integer<int64_t> (b[6])<<8  | std::to_integer<int64_t> (b[7]);
         return file;
     }
 
