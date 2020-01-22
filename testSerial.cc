@@ -21,7 +21,7 @@ TEST(Read, uint8){
 }
 
 TEST(Read, int8_Min){
-	int8_t ecriture =std::numeric_limits<int>::min();
+	int8_t ecriture =std::numeric_limits<int8_t>::min();
 	int8_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -51,7 +51,7 @@ TEST(Read, int8_Random){
 }
 
 TEST(Read, int8_Max){
-	int8_t ecriture =std::numeric_limits<int>::max();
+	int8_t ecriture =std::numeric_limits<int8_t>::max();
 	int8_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -383,6 +383,23 @@ TEST(Read, double_Max){
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
+
+TEST(Read, double_MaxTEST){
+	uint ecriture = 1; 
+	uint lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 											/************************************
 											 * 				BOOL				*
 											 ************************************/
@@ -433,7 +450,6 @@ TEST(Read, char){
 	}
 	EXPECT_EQ(charEntree, CharLu);
 }
-
 
 int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc, argv);

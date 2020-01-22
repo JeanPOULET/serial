@@ -248,6 +248,7 @@ namespace serial {
 
     IBinaryFile& operator>>(IBinaryFile& file, char& x){
         std::byte b;
+        file.read(&b,1);
         x=static_cast<char>(b);
         return file;
     }
