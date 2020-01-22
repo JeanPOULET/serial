@@ -1238,6 +1238,7 @@ TEST(Read, set_int64){
 		serial::IBinaryFile ibinary("ficTemplate");
 		ibinary>>setLu;
 	}
+	
 	EXPECT_EQ(setEntree.size(), setLu.size());
 	EXPECT_EQ(setEntree, setLu);
 }
