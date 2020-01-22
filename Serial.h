@@ -134,6 +134,16 @@ namespace serial {
 
   template<typename K, typename V>
   OBinaryFile& operator<<(OBinaryFile& file, const std::map<K,V>& x) {
+
+    K varL;
+    V varR;
+    for(auto i=x.begin();i!=x.end();++i){
+      varL = i->first;
+      varR = i->second;
+      file<<varL;
+      file<<varR;
+    }
+
     return file;
   }
 
@@ -185,6 +195,14 @@ namespace serial {
 
   template<typename K, typename V>
   IBinaryFile& operator>>(IBinaryFile& file, std::map<K, V>& x) {
+    K tmpL;
+    V tmpR;
+    for(auto i = x.begin(); i != x.end(); ++i) {
+      file>>tmpL;
+      file>>tmpR;
+      x.insert({tmpL,tmpR});
+      
+    }
     return file;
   }
 
