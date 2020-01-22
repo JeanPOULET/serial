@@ -32,6 +32,21 @@ TEST(Read, int8_Negative){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, int8_Random){
+	int8_t ecriture = -52;
+	int8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Read, int8_Positive){
 	int8_t ecriture =127;
 	int8_t lecture;
@@ -95,6 +110,22 @@ TEST(Read, int16_Negative){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, int16_Random){
+	int16_t ecriture = 25600; 
+	int16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Read, int16_Positive){
 	int16_t ecriture = 32768; 
 	int16_t lecture;
@@ -143,6 +174,22 @@ TEST(Read, int32_Positive){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, int32_Random){
+	int32_t ecriture = 16323; 
+	int32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Read, int32_Negative){
 	int32_t ecriture = -2147483647; 
 	int32_t lecture;
@@ -161,7 +208,7 @@ TEST(Read, int32_Negative){
 
 
 TEST(Read, uint64_MaxValue){
-	uint64_t ecriture = 18446744073709551614; 
+	uint64_t ecriture = 1844674407370955161; 
 	uint64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -178,6 +225,22 @@ TEST(Read, uint64_MaxValue){
 
 TEST(Read, int64_Positive){
 	int64_t ecriture = 9223372036854775807; 
+	int64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int64_Random){
+	int64_t ecriture = 56781435288858; 
 	int64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
