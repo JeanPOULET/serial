@@ -152,8 +152,8 @@ namespace serial {
   OBinaryFile& operator<<(OBinaryFile& file, const std::set<T>& x) {
     uint32_t lg = static_cast<uint32_t>(x.size());
     T var;
-    for(uint32_t i=0; i<lg;++i){
-      var = x[i];
+    for(auto i=x.begin();i!=x.end();++i){
+      var = *i;
       file<<var;
 
     }
@@ -224,7 +224,7 @@ namespace serial {
     T tmp;
     for(uint32_t i = 0 ; i < lg ; ++i){
       file>>tmp;
-      st.push_back(tmp);
+      st.insert(tmp);
     }
     x = st;
     return file;
