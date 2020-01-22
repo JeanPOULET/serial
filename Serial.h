@@ -122,7 +122,6 @@ namespace serial {
   template<typename T, std::size_t N>
   OBinaryFile& operator<<(OBinaryFile& file, const std::array<T,N>& x) {
     uint32_t lg = static_cast<uint32_t>(x.size());
-    file<<lg;
     T var;
     for(uint32_t i=0; i<lg;++i){
       var = x[i];
@@ -178,7 +177,7 @@ namespace serial {
     T tmp;
     for(uint32_t i = 0 ; i < lg ; ++i){
       file>>tmp;
-      x.fill(tmp);
+      x[i]=tmp;
     }
 
     return file;
