@@ -1043,7 +1043,6 @@ TEST(Read, array_int64){
 		ibinary>>arrayLu;
 	}
 	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
-		printf("arrayLu [%d] = %d\n",ln,arrayLu[ln]);
 		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
 	}
 }
