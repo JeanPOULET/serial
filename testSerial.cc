@@ -1193,9 +1193,8 @@ TEST(Read, set_uint8){
 	}
 
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
+	
 }
 
 TEST(Read, set_int8){
@@ -1210,9 +1209,7 @@ TEST(Read, set_int8){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 TEST(Read, set_uint64){
@@ -1227,9 +1224,7 @@ TEST(Read, set_uint64){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 TEST(Read, set_int64){
@@ -1244,9 +1239,7 @@ TEST(Read, set_int64){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 TEST(Read, set_string){
@@ -1261,9 +1254,7 @@ TEST(Read, set_string){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 TEST(Read, set_char){
@@ -1278,9 +1269,7 @@ TEST(Read, set_char){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 TEST(Read, set_bool){
@@ -1295,9 +1284,7 @@ TEST(Read, set_bool){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	for(size_t x = 0; x<setEntree.size(); x++){
-		EXPECT_EQ(setEntree[x], setLu[x]);
-	}
+	EXPECT_EQ(setEntree, setLu);
 }
 
 int main(int argc, char* argv[]) {
