@@ -126,14 +126,10 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, float x){
-        /*std::byte b[4];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
-        b[2] = std::byte(x >> 16 & 0xff);
-        b[3] = std::byte(x >> 24 & 0xff);
-        for(int i=0;i<4;++i){
-            file.write(&b[i],1);
-        }*/
+        uint32_t u;
+        std::memcpy(&u,&x,sizeof(uint32_t));
+        file << u;
+
         return file;
     }
 
@@ -250,12 +246,14 @@ namespace serial {
 
     IBinaryFile& operator>>(IBinaryFile& file, char& x){
         std::byte b;
-        file.read(&b,1);
         x=static_cast<char>(b);
         return file;
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, float& x){
+        uint32_t u;
+        std::memcpy(&u,&x,sizeof(float));
+        file>>x;
         return file;
     }
 
