@@ -438,17 +438,65 @@ TEST(Read, bool_true){
 											 ************************************/
 TEST(Read, char){
 	char charEntree ='V'; 
-	char CharLu;
+	char charLu;
   	{
 		serial::OBinaryFile obinary("ficCar");
 		obinary << charEntree;
  	}
 	{
 		serial::IBinaryFile ibinary("ficCar");
-		ibinary>>CharLu;
+		ibinary>>charLu;
 		//printf("CharLu = %c\n",CharLu);
 	}
-	EXPECT_EQ(charEntree, CharLu);
+	EXPECT_EQ(charEntree, charLu);
+}
+
+											/************************************
+											 * 				STRING				*
+											 ************************************/
+TEST(Read, chaine_superCourte){
+	std::string chaineEntree ="z"; 
+	std::string chaineLu;
+  	{
+		serial::OBinaryFile obinary("ficString");
+		obinary << chaineEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficString");
+		ibinary>>chaineLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(chaineEntree, chaineLu);
+}
+
+TEST(Read, chaine_courte){
+	std::string chaineEntree ="Bande de petits joueurs"; 
+	std::string chaineLu;
+  	{
+		serial::OBinaryFile obinary("ficString");
+		obinary << chaineEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficString");
+		ibinary>>chaineLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(chaineEntree, chaineLu);
+}
+
+TEST(Read, chaine_longue){
+	std::string chaineEntree ="Bande de petits joueurs, faut vous dépêchez si vous voulez trouver le trésor, un demi-million de dollars ça en fait des paquets de clopes, faut aller au fond de la godasse, vous êtes prêt à mourir ?, j'ai toujours voulu vivre au far ouest, y a une équipe rivale qui va vous passez devant, vous vous plaignez que les professeurs vous engueule quand vous faites une erreur et pour une fois que je vous offre l'occasion de vous vengez vous le faite pas ?, on va passer à quelque chose de plus fort !"; 
+	std::string chaineLu;
+  	{
+		serial::OBinaryFile obinary("ficString");
+		obinary << chaineEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficString");
+		ibinary>>chaineLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(chaineEntree, chaineLu);
 }
 
 int main(int argc, char* argv[]) {
