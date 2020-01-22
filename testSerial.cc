@@ -3,6 +3,24 @@
 #include "gtest/gtest.h"
 
 											/************************************
+											 * 			CONSTRUCTEUR			*
+											 ************************************/
+TEST(Read, constru){
+	uint8_t ecriture =std::numeric_limits<uint8_t>::min(); 
+	uint8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+		serial::OBinaryFile obiwan = **obinary;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+											/************************************
 											 * 			UINT8 & INT8			*
 											 ************************************/
 TEST(Read, uint8_Min){
