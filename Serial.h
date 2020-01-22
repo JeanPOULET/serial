@@ -134,7 +134,8 @@ namespace serial {
 
   template<typename K, typename V>
   OBinaryFile& operator<<(OBinaryFile& file, const std::map<K,V>& x) {
-
+    uint32_t lg = static_cast<uint32_t>(x.size());
+    file<<lg;
     K varL;
     V varR;
     for(auto i=x.begin();i!=x.end();++i){
@@ -202,9 +203,11 @@ namespace serial {
 
   template<typename K, typename V>
   IBinaryFile& operator>>(IBinaryFile& file, std::map<K, V>& x) {
+    uint32_t lg;
+    file>>lg;    
     K tmpL;
     V tmpR;
-    for(auto i = x.begin(); i != x.end(); ++i) {
+    for(uint32_t i = 0;i<lg;i++) {
       file>>tmpL;
       file>>tmpR;
       x.insert({tmpL,tmpR});
