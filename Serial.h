@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
-
+#include <cstring>
 #include <array>
 #include <map>
 #include <set>
