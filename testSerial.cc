@@ -9,13 +9,12 @@ TEST(Read, constru){
 	uint8_t ecriture =std::numeric_limits<uint8_t>::min(); 
 	uint8_t lecture;
 	{
-		serial::OBinaryFile obinary("fichou");
-		obinary << ecriture;
-		serial::OBinaryFile obiwan = **obinary;
+		serial::OBinaryFile obiwan (serial::OBinaryFile("fichou"));
+		obiwan << ecriture;
 	}
 
 	{
-		serial::IBinaryFile ibinary("fichou");
+		serial::IBinaryFile ibinary = serial::IBinaryFile("fichou");
 		ibinary>>lecture;
 	}
 	EXPECT_EQ(lecture,ecriture);
