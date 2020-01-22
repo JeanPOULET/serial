@@ -5,7 +5,37 @@
 											/************************************
 											 * 			UINT8 & INT8			*
 											 ************************************/
-TEST(Read, uint8){
+TEST(Read, uint8_Min){
+	uint8_t ecriture =std::numeric_limits<uint8_t>::min(); 
+	uint8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint8_Zero){
+	uint8_t ecriture =0; 
+	uint8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint8_Random){
 	uint8_t ecriture =42; 
 	uint8_t lecture;
 	{
@@ -20,8 +50,53 @@ TEST(Read, uint8){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, uint8_Max){
+	uint8_t ecriture =std::numeric_limits<uint8_t>::max(); 
+	uint8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Read, int8_Min){
-	int8_t ecriture =std::numeric_limits<int8_t>::min();
+	int8_t ecriture =std::numeric_limits<int8_t>::max();
+	int8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int8_Zero){
+	int8_t ecriture = 0;
+	int8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int8_ZeroNegatif){
+	int8_t ecriture = -0;
 	int8_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -68,7 +143,39 @@ TEST(Read, int8_Max){
 											/************************************
 											 * 			UINT16 & INT16			*
 											 ************************************/
-TEST(Read, uint16){
+TEST(Read, uint16_Min){
+	uint16_t ecriture =std::numeric_limits<uint16_t>::min(); 
+	uint16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint16_Zero){
+	uint16_t ecriture =0; 
+	uint16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint16_Random){
 	uint16_t ecriture =300; 
 	uint16_t lecture;
 	{
@@ -84,7 +191,7 @@ TEST(Read, uint16){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, uint16_MaxValue){
+TEST(Read, uint16_Max){
 	uint16_t ecriture =std::numeric_limits<uint16_t>::max(); 
 	uint16_t lecture;
 	{
@@ -102,6 +209,38 @@ TEST(Read, uint16_MaxValue){
 
 TEST(Read, int16_Min){
 	int16_t ecriture = std::numeric_limits<int16_t>::min(); 
+	int16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int16_Zero){
+	int16_t ecriture = 0; 
+	int16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int16_ZeroNegatif){
+	int16_t ecriture = -0; 
 	int16_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -151,7 +290,55 @@ TEST(Read, int16_Max){
 											/************************************
 											 * 			UINT32 & INT32			*
 											 ************************************/
-TEST(Read, uint32_MaxValue){
+TEST(Read, uint32_Min){
+	uint32_t ecriture = std::numeric_limits<uint32_t>::min(); 
+	uint32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint32_Zero){
+	uint32_t ecriture = 0; 
+	uint32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint32_Random){
+	uint32_t ecriture = 579346001; 
+	uint32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint32_Max){
 	uint32_t ecriture = std::numeric_limits<uint32_t>::max(); 
 	uint32_t lecture;
 	{
@@ -167,8 +354,40 @@ TEST(Read, uint32_MaxValue){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int32_Max){
-	int32_t ecriture = std::numeric_limits<int32_t>::max(); 
+TEST(Read, int32_Min){
+	int32_t ecriture = std::numeric_limits<int32_t>::min(); 
+	int32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int32_Zero){
+	int32_t ecriture = 0; 
+	int32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int32_ZeroNegatif){
+	int32_t ecriture = -0; 
 	int32_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -199,8 +418,8 @@ TEST(Read, int32_Random){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int32_Min){
-	int32_t ecriture = std::numeric_limits<int32_t>::min(); 
+TEST(Read, int32_Max){
+	int32_t ecriture = std::numeric_limits<int32_t>::max(); 
 	int32_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -215,10 +434,59 @@ TEST(Read, int32_Min){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+
 											/************************************
 											 * 			UINT64 & INT64			*
 											 ************************************/
-TEST(Read, uint64_MaxValue){
+TEST(Read, uint64_Min){
+	uint64_t ecriture = std::numeric_limits<uint64_t>::min(); 
+	uint64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint64_Zero){
+	uint64_t ecriture = 0; 
+	uint64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint64_Random){
+	uint64_t ecriture = 1200; 
+	uint64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint64_Max){
 	uint64_t ecriture = std::numeric_limits<uint64_t>::max(); 
 	uint64_t lecture;
 	{
@@ -234,8 +502,40 @@ TEST(Read, uint64_MaxValue){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int64_Max){
-	int64_t ecriture = std::numeric_limits<int64_t>::max(); 
+TEST(Read, int64_Min){
+	int64_t ecriture = std::numeric_limits<int64_t>::min(); 
+	int64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int64_Zero){
+	int64_t ecriture = 0; 
+	int64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int64_ZeroNegatif){
+	int64_t ecriture = -0; 
 	int64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -266,8 +566,8 @@ TEST(Read, int64_Random){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int64_Min){
-	int64_t ecriture = std::numeric_limits<int64_t>::min(); 
+TEST(Read, int64_Max){
+	int64_t ecriture = std::numeric_limits<int64_t>::max(); 
 	int64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -287,6 +587,38 @@ TEST(Read, int64_Min){
 											 ************************************/
 TEST(Read, float_Min){
 	float ecriture = std::numeric_limits<float>::min(); 
+	float lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, float_Zero){
+	float ecriture = 0; 
+	float lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, float_ZeroNegatif){
+	float ecriture = -0; 
 	float lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -352,6 +684,37 @@ TEST(Read, double_Min){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, double_Zero){
+	double ecriture = 0; 
+	double lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+TEST(Read, double_ZeroNegatif){
+	double ecriture = -0; 
+	double lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Read, double_Random){
 	double ecriture = 82.543; 
 	double lecture;
@@ -371,22 +734,6 @@ TEST(Read, double_Random){
 TEST(Read, double_Max){
 	double ecriture = std::numeric_limits<double>::max(); 
 	double lecture;
-	{
-		serial::OBinaryFile obinary("fichou");
-		obinary << ecriture;
-	}
-
-	{
-		serial::IBinaryFile ibinary("fichou");
-		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
-	}
-	EXPECT_EQ(lecture,ecriture);
-}
-
-TEST(Read, double_MaxTEST){
-	uint ecriture = 1; 
-	uint lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
 		obinary << ecriture;
@@ -436,7 +783,7 @@ TEST(Read, bool_true){
 											/************************************
 											 * 				CHAR				*
 											 ************************************/
-TEST(Read, char){
+TEST(Read, char_Maj){
 	char charEntree ='V'; 
 	char charLu;
   	{
@@ -451,6 +798,35 @@ TEST(Read, char){
 	EXPECT_EQ(charEntree, charLu);
 }
 
+TEST(Read, char_Min){
+	char charEntree ='h'; 
+	char charLu;
+  	{
+		serial::OBinaryFile obinary("ficCar");
+		obinary << charEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficCar");
+		ibinary>>charLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(charEntree, charLu);
+}
+
+TEST(Read, char_Spe){
+	char charEntree ='&'; 
+	char charLu;
+  	{
+		serial::OBinaryFile obinary("ficCar");
+		obinary << charEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficCar");
+		ibinary>>charLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(charEntree, charLu);
+}
 											/************************************
 											 * 				STRING				*
 											 ************************************/
