@@ -17,8 +17,23 @@ TEST(Read, uint8){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int8){
+TEST(Read, int8_Negative){
 	int8_t ecriture =-127;
+	int8_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int8_Positive){
+	int8_t ecriture =127;
 	int8_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -43,12 +58,12 @@ TEST(Read, uint16){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		printf("lecture = %d\n",lecture);
+		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, uint16_2){
+TEST(Read, uint16_MaxValue){
 	uint16_t ecriture =65535; 
 	uint16_t lecture;
 	{
@@ -59,12 +74,12 @@ TEST(Read, uint16_2){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		printf("lecture = %d\n",lecture);
+		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
 
-TEST(Read, int16){
+TEST(Read, int16_Negative){
 	int16_t ecriture = -32768; 
 	int16_t lecture;
 	{
@@ -75,7 +90,71 @@ TEST(Read, int16){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		printf("lecture = %d\n",lecture);
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int16_Positive){
+	int16_t ecriture = 32768; 
+	int16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, uint32_MaxValue){
+	uint32_t ecriture = 4294967295; 
+	uint32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int32_Positive){
+	int32_t ecriture = 2147483647; 
+	int32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int32_Negative){
+	int32_t ecriture = -2147483647; 
+	int32_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
