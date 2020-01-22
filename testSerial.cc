@@ -2,6 +2,9 @@
 
 #include "gtest/gtest.h"
 
+											/************************************
+											 * 			UINT8 & INT8			*
+											 ************************************/
 TEST(Read, uint8){
 	uint8_t ecriture =42; 
 	uint8_t lecture;
@@ -62,6 +65,9 @@ TEST(Read, int8_Positive){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+											/************************************
+											 * 			UINT16 & INT16			*
+											 ************************************/
 TEST(Read, uint16){
 	uint16_t ecriture =300; 
 	uint16_t lecture;
@@ -142,6 +148,9 @@ TEST(Read, int16_Positive){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+											/************************************
+											 * 			UINT32 & INT32			*
+											 ************************************/
 TEST(Read, uint32_MaxValue){
 	uint32_t ecriture = 4294967295; 
 	uint32_t lecture;
@@ -206,7 +215,9 @@ TEST(Read, int32_Negative){
 	EXPECT_EQ(lecture,ecriture);
 }
 
-
+											/************************************
+											 * 			UINT64 & INT64			*
+											 ************************************/
 TEST(Read, uint64_MaxValue){
 	uint64_t ecriture = 1844674407370955161; 
 	uint64_t lecture;
@@ -270,7 +281,57 @@ TEST(Read, int64_Negative){
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
+/*
+TEST(Read, float_Random){
+	float ecriture = 82.543; 
+	float lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
 
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %ld\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}*/
+											/************************************
+											 * 				BOOL				*
+											 ************************************/
+TEST(Read, bool_false){
+	bool charEntree =false; 
+	bool CharLu;
+  	{
+		serial::OBinaryFile obinary("ficCar");
+		obinary << charEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficCar");
+		ibinary>>CharLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(charEntree, CharLu);
+}
+
+TEST(Read, bool_true){
+	bool charEntree =true; 
+	bool CharLu;
+  	{
+		serial::OBinaryFile obinary("ficCar");
+		obinary << charEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficCar");
+		ibinary>>CharLu;
+		//printf("CharLu = %c\n",CharLu);
+	}
+	EXPECT_EQ(charEntree, CharLu);
+}
+											/************************************
+											 * 				CHAR				*
+											 ************************************/
 TEST(Read, char){
 	char charEntree ='V'; 
 	char CharLu;
@@ -285,6 +346,7 @@ TEST(Read, char){
 	}
 	EXPECT_EQ(charEntree, CharLu);
 }
+
 
 int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
