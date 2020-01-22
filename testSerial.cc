@@ -171,7 +171,7 @@ TEST(Read, uint64_MaxValue){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
+		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -187,7 +187,7 @@ TEST(Read, int64_Positive){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
+		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -203,7 +203,7 @@ TEST(Read, int64_Negative){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
+		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
