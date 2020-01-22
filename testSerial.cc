@@ -454,7 +454,7 @@ TEST(Read, char){
 											/************************************
 											 * 				STRING				*
 											 ************************************/
-TEST(Read, chaine_courte){
+TEST(Read, chaine_superCourte){
 	std::string chaineEntree ="z"; 
 	std::string chaineLu;
   	{
