@@ -1065,8 +1065,8 @@ TEST(Read, map_uint8){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin()));
+	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin()));
 }
 
 TEST(Read, map_int8){
