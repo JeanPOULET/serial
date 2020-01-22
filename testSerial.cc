@@ -1285,7 +1285,7 @@ TEST(Read, set_char){
 
 TEST(Read, set_bool){
 	std::set<bool> setEntree = {true, true, false};
-	std::set<bool, bool> setLu;
+	std::set<bool> setLu;
   	{
 		serial::OBinaryFile obinary("ficTemplate");
 		obinary << setEntree;
