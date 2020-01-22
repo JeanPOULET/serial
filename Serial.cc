@@ -70,7 +70,7 @@ namespace serial {
         b[2] = std::byte(x >> 16 & 0xff);
         b[3] = std::byte(x >> 24 & 0xff);
         for(int i=0;i<4;++i){
-            file.write(&b[0],1);
+            file.write(&b[i],1);
         }
         return file;
     }
@@ -82,12 +82,24 @@ namespace serial {
         b[2] = std::byte(x >> 16 & 0xff);
         b[3] = std::byte(x >> 24 & 0xff);
         for(int i=0;i<4;++i){
-            file.write(&b[0],1);
+            file.write(&b[i],1);
         }
         return file;
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint64_t x){
+        std::byte b[8];
+        b[0] = std::byte(x & 0xff);
+        b[1] = std::byte(x >> 8 & 0xff);
+        b[2] = std::byte(x >> 16 & 0xff);
+        b[3] = std::byte(x >> 24 & 0xff);
+        b[4] = std::byte(x >> 32 & 0xff);
+        b[5] = std::byte(x >> 40 & 0xff);
+        b[6] = std::byte(x >> 48 & 0xff);
+        b[7] = std::byte(x >> 54 & 0xff);
+        for(int i=0;i<8;++i){
+            file.write(&b[i],1);
+        }
         return file;
     }
 
@@ -181,7 +193,7 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, uint32_t& x){
         std::byte b[4];
         for(int i=0;i<4;++i){
-            file.read(&b[0],1);
+            file.read(&b[i],1);
         }
         x = (uint32_t) b[3]<<24 | (uint32_t) b[2]<<16 | (uint32_t) b[1]<<8 | (uint32_t) b[0];
         return file;
@@ -190,7 +202,7 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, int32_t& x){
         std::byte b[4];
         for(int i=0;i<4;++i){
-            file.read(&b[0],1);
+            file.read(&b[i],1);
         }
         x = (uint32_t) b[3]<<24 | (uint32_t) b[2]<<16 | (uint32_t) b[1]<<8 | (uint32_t) b[0];
         return file;
