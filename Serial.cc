@@ -9,7 +9,6 @@ namespace serial {
     OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode)
         :  m_file(std::fopen(filename.c_str(),mode==Truncate?"wb":"ab"))
         {
-
             if(nullptr == m_file ){
                 throw std::runtime_error("Impossible d'ouvrir le fichier");
             }
@@ -17,26 +16,26 @@ namespace serial {
 
     OBinaryFile::~OBinaryFile()
        {
-        fclose(m_file);
+        std::fclose(m_file);
        } 
 
     OBinaryFile::OBinaryFile(OBinaryFile&& other) noexcept
-        : m_file(std::exchange(other.m_file,nullptr)){}    
+        : m_file(std::move(other.m_file)){}    
 
     OBinaryFile& OBinaryFile::operator=(OBinaryFile&& other) noexcept
         {
-            std::swap(m_file,other.m_file);
+            std::move(other.m_file);
             return *this;
         }
 
     std::size_t OBinaryFile::write(const std::byte* data, std::size_t size){
-        return fwrite(data,size,size,m_file);
+        return std::fwrite(data,size,size,m_file);
         
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
-        std::byte b = std::byte(x); 
-        file.write(&b,1);
+        std::byte b = {(std::byte(x))};
+        file.write(&b,1);  
         return file; 
     }
 
@@ -105,26 +104,26 @@ namespace serial {
 
     IBinaryFile::~IBinaryFile()
         {
-            fclose(m_file);
+            std::fclose(m_file);
         }
 
     IBinaryFile::IBinaryFile(IBinaryFile&& other) noexcept
-        : m_file(std::exchange(other.m_file,nullptr)){}
+        : m_file(std::move(other.m_file)){}
 
     IBinaryFile& IBinaryFile::operator=(IBinaryFile&& other) noexcept
         {
-            std::swap(m_file,other.m_file);
+            std::move(other.m_file);
             return *this;
         }
 
     std::size_t IBinaryFile::read(std::byte* data, std::size_t size){
-        return fread(data,size,size,m_file);
+        return std::fread(data,size,size,m_file);
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
         std::byte b;
-        file.read(&b,1);
-        x = uint8_t(b);
+        file.read(&b,1); 
+        x = (uint8_t)b;
         return file;
     }
 

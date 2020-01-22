@@ -3,14 +3,17 @@
 #include "gtest/gtest.h"
 
 TEST(Read, uint8){
+  {
     serial::OBinaryFile obinary("fichou");
-    uint8_t voiture =75; 
+    uint8_t voiture =42; 
     obinary << voiture;
-
+  }
+  {
     serial::IBinaryFile ibinary("fichou");
     uint8_t lecture;
     ibinary>>lecture;
     printf("lecture = %d\n",lecture);
+  }
 }
 
 TEST(Output, char){
