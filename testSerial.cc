@@ -48,6 +48,38 @@ TEST(Read, uint16){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+TEST(Read, uint16_2){
+	uint16_t ecriture =65535; 
+	uint16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int16){
+	int16_t ecriture = -32768; 
+	int16_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Output, char){
 	char charEntree ='V'; 
 	char CharLu;
