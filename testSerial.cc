@@ -3,19 +3,34 @@
 #include "gtest/gtest.h"
 
 TEST(Read, uint8){
-  	{
-		serial::OBinaryFile obinary("fichou");
-		uint8_t voiture = 42; 
-		obinary << voiture;
-  	}
-  	{
-		serial::IBinaryFile ibinary("fichou");
-		uint8_t lecture;
-		ibinary>>lecture;
-		printf("lecture = %d\n",lecture);
-  	}
-}
+  uint8_t ecriture =42; 
+  {
+    serial::OBinaryFile obinary("fichou");
+    obinary << ecriture;
+  }
 
+  {
+    serial::IBinaryFile ibinary("fichou");
+    uint8_t lecture;
+    ibinary>>lecture;
+    EXPECT_EQ(lecture,ecriture);
+  }
+
+}
+TEST(Read, int8){
+  int8_t ecriture =-127;
+  {
+    serial::OBinaryFile obinary("fichou");
+    obinary << ecriture;
+  }
+
+  {
+    serial::IBinaryFile ibinary("fichou");
+    int8_t lecture;
+    ibinary>>lecture;
+    EXPECT_EQ(lecture,ecriture);
+  }
+}
 TEST(Output, char){
 	char charEntré ='V'; 
 	char CharLu;

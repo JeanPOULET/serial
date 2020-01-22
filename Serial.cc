@@ -9,6 +9,7 @@ namespace serial {
     OBinaryFile::OBinaryFile(const std::string& filename, OBinaryFile::Mode mode)
         :  m_file(std::fopen(filename.c_str(),mode==Truncate?"wb":"ab"))
         {
+
             if(nullptr == m_file ){
                 throw std::runtime_error("Impossible d'ouvrir le fichier");
             }
@@ -16,26 +17,26 @@ namespace serial {
 
     OBinaryFile::~OBinaryFile()
        {
-        std::fclose(m_file);
+        fclose(m_file);
        } 
 
     OBinaryFile::OBinaryFile(OBinaryFile&& other) noexcept
-        : m_file(std::move(other.m_file)){}    
+        : m_file(std::exchange(other.m_file,nullptr)){}    
 
     OBinaryFile& OBinaryFile::operator=(OBinaryFile&& other) noexcept
         {
-            std::move(other.m_file);
+            std::swap(m_file,other.m_file);
             return *this;
         }
 
     std::size_t OBinaryFile::write(const std::byte* data, std::size_t size){
-        return std::fwrite(data,size,size,m_file);
+        return fwrite(data,size,size,m_file);
         
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint8_t x){
-        std::byte b = {(std::byte(x))};
-        file.write(&b,1);  
+        std::byte b = std::byte(x); 
+        file.write(&b,1);
         return file; 
     }
 
@@ -46,6 +47,10 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+<<<<<<< HEAD
+=======
+        
+>>>>>>> b6e8926534e9a8358923da381f734ae7f4e0adb9
         return file;
     }
 
@@ -106,26 +111,26 @@ namespace serial {
 
     IBinaryFile::~IBinaryFile()
         {
-            std::fclose(m_file);
+            fclose(m_file);
         }
 
     IBinaryFile::IBinaryFile(IBinaryFile&& other) noexcept
-        : m_file(std::move(other.m_file)){}
+        : m_file(std::exchange(other.m_file,nullptr)){}
 
     IBinaryFile& IBinaryFile::operator=(IBinaryFile&& other) noexcept
         {
-            std::move(other.m_file);
+            std::swap(m_file,other.m_file);
             return *this;
         }
 
     std::size_t IBinaryFile::read(std::byte* data, std::size_t size){
-        return std::fread(data,size,size,m_file);
+        return fread(data,size,size,m_file);
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, uint8_t& x){
         std::byte b;
-        file.read(&b,1); 
-        x = (uint8_t)b;
+        file.read(&b,1);
+        x = uint8_t(b);
         return file;
     }
 
@@ -139,6 +144,7 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, uint16_t& x){
         return file;
     }
+    
 
     IBinaryFile& operator>>(IBinaryFile& file, int16_t& x){
         return file;
