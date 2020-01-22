@@ -46,6 +46,7 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
+        
         return file;
     }
 
