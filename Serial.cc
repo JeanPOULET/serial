@@ -47,8 +47,8 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
         std::byte b[2];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
+        b[1] = std::byte(x & 0xff);
+        b[0] = std::byte(x >> 8 & 0xff);
         file.write(&b[0],1);
         file.write(&b[1],1);
         return file;
@@ -56,8 +56,8 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, int16_t x){
         std::byte b[2];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
+        b[1] = std::byte(x & 0xff);
+        b[0] = std::byte(x >> 8 & 0xff);
         file.write(&b[0],1);
         file.write(&b[1],1);
         return file;
@@ -65,10 +65,10 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, uint32_t x){
         std::byte b[4];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
-        b[2] = std::byte(x >> 16 & 0xff);
-        b[3] = std::byte(x >> 24 & 0xff);
+        b[3] = std::byte(x & 0xff);
+        b[2] = std::byte(x >> 8 & 0xff);
+        b[1] = std::byte(x >> 16 & 0xff);
+        b[0] = std::byte(x >> 24 & 0xff);
         for(int i=0;i<4;++i){
             file.write(&b[i],1);
         }
@@ -77,10 +77,10 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, int32_t x){
         std::byte b[4];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
-        b[2] = std::byte(x >> 16 & 0xff);
-        b[3] = std::byte(x >> 24 & 0xff);
+        b[3] = std::byte(x & 0xff);
+        b[2] = std::byte(x >> 8 & 0xff);
+        b[1] = std::byte(x >> 16 & 0xff);
+        b[0] = std::byte(x >> 24 & 0xff);
         for(int i=0;i<4;++i){
             file.write(&b[i],1);
         }
@@ -89,14 +89,14 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, uint64_t x){
         std::byte b[8];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
-        b[2] = std::byte(x >> 16 & 0xff);
-        b[3] = std::byte(x >> 24 & 0xff);
-        b[4] = std::byte(x >> 32 & 0xff);
-        b[5] = std::byte(x >> 40 & 0xff);
-        b[6] = std::byte(x >> 48 & 0xff);
-        b[7] = std::byte(x >> 56 & 0xff);
+        b[7] = std::byte(x & 0xff);
+        b[6] = std::byte(x >> 8 & 0xff);
+        b[5] = std::byte(x >> 16 & 0xff);
+        b[4] = std::byte(x >> 24 & 0xff);
+        b[3] = std::byte(x >> 32 & 0xff);
+        b[2] = std::byte(x >> 40 & 0xff);
+        b[1] = std::byte(x >> 48 & 0xff);
+        b[0] = std::byte(x >> 56 & 0xff);
         for(int i=0;i<8;++i){
             file.write(&b[i],1);
         }
@@ -105,14 +105,14 @@ namespace serial {
 
     OBinaryFile& operator<<(OBinaryFile& file, int64_t x){
         std::byte b[8];
-        b[0] = std::byte(x & 0xff);
-        b[1] = std::byte(x >> 8 & 0xff);
-        b[2] = std::byte(x >> 16 & 0xff);
-        b[3] = std::byte(x >> 24 & 0xff);
-        b[4] = std::byte(x >> 32 & 0xff);
-        b[5] = std::byte(x >> 40 & 0xff);
-        b[6] = std::byte(x >> 48 & 0xff);
-        b[7] = std::byte(x >> 56 & 0xff);
+        b[7] = std::byte(x & 0xff);
+        b[6] = std::byte(x >> 8 & 0xff);
+        b[5] = std::byte(x >> 16 & 0xff);
+        b[4] = std::byte(x >> 24 & 0xff);
+        b[3] = std::byte(x >> 32 & 0xff);
+        b[2] = std::byte(x >> 40 & 0xff);
+        b[1] = std::byte(x >> 48 & 0xff);
+        b[0] = std::byte(x >> 56 & 0xff);
         for(int i=0;i<8;++i){
             file.write(&b[i],1);
         }
@@ -198,7 +198,7 @@ namespace serial {
         std::byte b[2];
         file.read(&b[0],1);
         file.read(&b[1],1);
-        x = (uint16_t) b[1]<<8 | (uint16_t)b[0];
+        x = (uint16_t) b[0]<<8 | (uint16_t)b[1];
         return file;
     }
 
@@ -206,7 +206,7 @@ namespace serial {
         std::byte b[2];
         file.read(&b[0],1);
         file.read(&b[1],1);
-        x = (int16_t) b[1]<<8 | (int16_t)b[0];
+        x = (int16_t) b[0]<<8 | (int16_t)b[1];
         return file;
     }
 
@@ -215,7 +215,7 @@ namespace serial {
         for(int i=0;i<4;++i){
             file.read(&b[i],1);
         }
-        x = static_cast<uint32_t> (b[3])<<24 | static_cast<uint32_t> (b[2])<<16 | static_cast<uint32_t> (b[1])<<8 | static_cast<uint32_t> (b[0]);
+        x = static_cast<uint32_t> (b[0])<<24 | static_cast<uint32_t> (b[1])<<16 | static_cast<uint32_t> (b[2])<<8 | static_cast<uint32_t> (b[3]);
         return file;
     }
 
@@ -224,7 +224,7 @@ namespace serial {
         for(int i=0;i<4;++i){
             file.read(&b[i],1);
         }
-        x = (uint32_t) b[3]<<24 | (uint32_t) b[2]<<16 | (uint32_t) b[1]<<8 | (uint32_t) b[0];
+        x = (uint32_t) b[0]<<24 | (uint32_t) b[1]<<16 | (uint32_t) b[2]<<8 | (uint32_t) b[3];
         return file;
     }
 
@@ -233,7 +233,7 @@ namespace serial {
         for(int i=0;i<8;++i){
             file.read(&b[i],1);
         }
-        x = (uint64_t) b[7]<<56 |(uint64_t) b[6]<<48 |(uint64_t) b[5]<<40 |(uint64_t) b[4]<<32 |(uint64_t) b[3]<<24 | (uint64_t) b[2]<<16 | (uint64_t) b[1]<<8 | (uint64_t) b[0];
+        x = (uint64_t) b[0]<<56 |(uint64_t) b[1]<<48 |(uint64_t) b[2]<<40 |(uint64_t) b[3]<<32 |(uint64_t) b[4]<<24 | (uint64_t) b[5]<<16 | (uint64_t) b[6]<<8 | (uint64_t) b[7];
         return file;
     }
 
@@ -242,7 +242,7 @@ namespace serial {
         for(int i=0;i<8;++i){
             file.read(&b[i],1);
         }
-        x = (int64_t) b[7]<<56 |(int64_t) b[6]<<48 |(int64_t) b[5]<<40 |(int64_t) b[4]<<32 |(int64_t) b[3]<<24 | (int64_t) b[2]<<16 | (int64_t) b[1]<<8 | (int64_t) b[0];
+        x = (int64_t) b[0]<<56 |(int64_t) b[1]<<48 |(int64_t) b[2]<<40 |(int64_t) b[3]<<32 |(int64_t) b[4]<<24 | (int64_t) b[5]<<16 | (int64_t) b[6]<<8 | (int64_t) b[7];
         return file;
     }
 
