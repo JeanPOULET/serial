@@ -1295,7 +1295,9 @@ TEST(Read, set_bool){
 		ibinary>>setLu;
 	}
 	EXPECT_EQ(setEntree.size(), setLu.size());
-	
+	for(size_t x = 0; x<setEntree.size(); x++){
+		EXPECT_EQ(setEntree[x], setLu[x]);
+	}
 }
 
 int main(int argc, char* argv[]) {
