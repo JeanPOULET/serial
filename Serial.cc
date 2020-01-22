@@ -146,7 +146,7 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, const std::string& x){
-        int32_t lg=static_cast<int32_t>(x.length()-1);
+        int32_t lg=static_cast<int32_t>(x.length());
         file<<lg;
         for(int32_t i=0;i<lg;++i){
             char c = x[i];
