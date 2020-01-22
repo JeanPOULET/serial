@@ -159,6 +159,55 @@ TEST(Read, int32_Negative){
 	EXPECT_EQ(lecture,ecriture);
 }
 
+
+TEST(Read, uint64_MaxValue){
+	uint64_t ecriture = 9223372036854775807; 
+	uint64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int64_Positive){
+	int64_t ecriture = 9223372036854775807; 
+	int64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
+TEST(Read, int64_Negative){
+	int64_t ecriture = -9223372036854775808; 
+	int64_t lecture;
+	{
+		serial::OBinaryFile obinary("fichou");
+		obinary << ecriture;
+	}
+
+	{
+		serial::IBinaryFile ibinary("fichou");
+		ibinary>>lecture;
+		//printf("lecture = %d\n",lecture);
+	}
+	EXPECT_EQ(lecture,ecriture);
+}
+
 TEST(Output, char){
 	char charEntree ='V'; 
 	char CharLu;
