@@ -20,11 +20,11 @@ namespace serial {
        } 
 
     OBinaryFile::OBinaryFile(OBinaryFile&& other) noexcept
-        : m_file(std::move(other.m_file)){}    
+        : m_file(std::exchange(other.m_file,nullptr)){}    
 
     OBinaryFile& OBinaryFile::operator=(OBinaryFile&& other) noexcept
         {
-            std::move(other.m_file);
+            std::swap(m_file,other.m_file);
             return *this;
         }
 
@@ -174,11 +174,11 @@ namespace serial {
         }
 
     IBinaryFile::IBinaryFile(IBinaryFile&& other) noexcept
-        : m_file(std::move(other.m_file)){}
+        : m_file(std::exchange(other.m_file,nullptr)){}
 
     IBinaryFile& IBinaryFile::operator=(IBinaryFile&& other) noexcept
         {
-            std::move(other.m_file);
+            std::swap(m_file,other.m_file);
             return *this;
         }
 
