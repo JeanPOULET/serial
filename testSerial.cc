@@ -933,7 +933,7 @@ TEST(Read, vector_bool){
 }
 
 											/************************************
-											 * 				map				*
+											 * 				ARRAY				*
 											 ************************************/
 TEST(Read, array_uint8){
 	std::array<uint8_t, 3> arrayEntree = {1,2,3};
@@ -1064,9 +1064,9 @@ TEST(Read, map_uint8){
 		serial::IBinaryFile ibinary("ficTemplate");
 		ibinary>>mapLu;
 	}
+
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_int8){
@@ -1084,8 +1084,7 @@ TEST(Read, map_int8){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_uint64){
@@ -1103,8 +1102,7 @@ TEST(Read, map_uint64){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_int64){
@@ -1122,8 +1120,7 @@ TEST(Read, map_int64){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_string){
@@ -1141,15 +1138,14 @@ TEST(Read, map_string){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_char){
 	std::map<char, char> mapEntree;
 	mapEntree['4'] = '2';
 	mapEntree['S'] = 's';
-	mapEntree['-'] = 'é';
+	mapEntree['-'] = 'p';
 	std::map<char, char> mapLu;
   	{
 		serial::OBinaryFile obinary("ficTemplate");
@@ -1160,8 +1156,7 @@ TEST(Read, map_char){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	EXPECT_EQ(mapEntree, mapLu);
 }
 
 TEST(Read, map_bool){
@@ -1179,8 +1174,7 @@ TEST(Read, map_bool){
 		ibinary>>mapLu;
 	}
 	EXPECT_EQ(mapEntree.size(), mapLu.size());
-	EXPECT_TRUE(std::equal(mapEntree.begin(), mapEntree.end, mapLu.begin());
-	EXPECT_TRUE(std::equal(mapLu.begin(), mapLu.end, mapEntree.begin());
+	
 }
 
 
