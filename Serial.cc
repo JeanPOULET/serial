@@ -142,6 +142,8 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, bool x){
+        std::byte b = static_cast<std::byte>(x);
+        file.write(&b,1);
         return file;
     }
 
@@ -249,7 +251,7 @@ namespace serial {
     IBinaryFile& operator>>(IBinaryFile& file, char& x){
         std::byte b;
         file.read(&b,1);
-        x=char(b);
+        x=static_cast<char>(b);
         return file;
     }
 
@@ -262,6 +264,9 @@ namespace serial {
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, bool& x){
+        std::byte b;
+        file.read(&b,1);
+        x=static_cast<bool>(b);
         return file;
     }
     
