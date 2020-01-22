@@ -41,6 +41,8 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, int8_t x){
+        std::byte b = std::byte(x); 
+        file.write(&b,1);
         return file<<x;
     }
 
@@ -129,6 +131,9 @@ namespace serial {
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, int8_t& x){
+        std::byte b;
+        file.read(&b,1);
+        x = int8_t(b);
         return file>>x;
     }
 
