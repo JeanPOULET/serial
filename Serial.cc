@@ -133,6 +133,9 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, double x){
+        uint64_t u;
+        std::memcpy(&u,&x,sizeof(uint64_t));
+        file << u;
         return file;
     }
 
@@ -259,6 +262,11 @@ namespace serial {
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, double& x){
+        uint64_t u;
+        file>>u;
+        double f;
+        std::memcpy(&f,&u,sizeof(double));
+        x=f;
         return file;
     }
 
