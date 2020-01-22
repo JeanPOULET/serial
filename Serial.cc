@@ -209,6 +209,11 @@ namespace serial {
     }
 
     IBinaryFile& operator>>(IBinaryFile& file, uint64_t& x){
+        std::byte b[8];
+        for(int i=0;i<8;++i){
+            file.read(&b[i],1);
+        }
+        x = (uint64_t) b[7]<<54 |(uint64_t) b[6]<<48 |(uint64_t) b[5]<<40 |(uint64_t) b[4]<<32 |(uint64_t) b[3]<<24 | (uint64_t) b[2]<<16 | (uint64_t) b[1]<<8 | (uint64_t) b[0];
         return file;
     }
 
