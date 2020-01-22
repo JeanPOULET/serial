@@ -161,7 +161,7 @@ TEST(Read, int32_Negative){
 
 
 TEST(Read, uint64_MaxValue){
-	uint64_t ecriture = 9223372036854775807; 
+	uint64_t ecriture = 18446744073709551614; 
 	uint64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
@@ -193,7 +193,7 @@ TEST(Read, int64_Positive){
 }
 
 TEST(Read, int64_Negative){
-	int64_t ecriture = -9223372036854775808; 
+	int64_t ecriture = -9223372036854775807; 
 	int64_t lecture;
 	{
 		serial::OBinaryFile obinary("fichou");
