@@ -154,7 +154,6 @@ TEST(Read, uint16_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -170,7 +169,6 @@ TEST(Read, uint16_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -186,7 +184,6 @@ TEST(Read, uint16_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -202,7 +199,6 @@ TEST(Read, uint16_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -218,7 +214,6 @@ TEST(Read, int16_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -234,7 +229,6 @@ TEST(Read, int16_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -250,7 +244,6 @@ TEST(Read, int16_ZeroNegatif){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -266,7 +259,6 @@ TEST(Read, int16_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -282,7 +274,6 @@ TEST(Read, int16_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -301,7 +292,6 @@ TEST(Read, uint32_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -317,7 +307,6 @@ TEST(Read, uint32_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -333,7 +322,6 @@ TEST(Read, uint32_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -349,7 +337,6 @@ TEST(Read, uint32_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -365,7 +352,6 @@ TEST(Read, int32_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -381,7 +367,6 @@ TEST(Read, int32_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -397,7 +382,6 @@ TEST(Read, int32_ZeroNegatif){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -413,7 +397,6 @@ TEST(Read, int32_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -429,7 +412,6 @@ TEST(Read, int32_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %d\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -449,7 +431,6 @@ TEST(Read, uint64_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -465,7 +446,6 @@ TEST(Read, uint64_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -481,7 +461,6 @@ TEST(Read, uint64_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -497,7 +476,6 @@ TEST(Read, uint64_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -513,7 +491,6 @@ TEST(Read, int64_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -529,7 +506,6 @@ TEST(Read, int64_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -545,7 +521,6 @@ TEST(Read, int64_ZeroNegatif){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -561,7 +536,6 @@ TEST(Read, int64_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -577,7 +551,6 @@ TEST(Read, int64_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -596,7 +569,6 @@ TEST(Read, float_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -612,7 +584,6 @@ TEST(Read, float_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -628,7 +599,6 @@ TEST(Read, float_ZeroNegatif){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -644,7 +614,6 @@ TEST(Read, float_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -660,7 +629,6 @@ TEST(Read, float_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -679,7 +647,6 @@ TEST(Read, double_Min){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -695,7 +662,6 @@ TEST(Read, double_Zero){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -710,7 +676,6 @@ TEST(Read, double_ZeroNegatif){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -726,7 +691,6 @@ TEST(Read, double_Random){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -742,7 +706,6 @@ TEST(Read, double_Max){
 	{
 		serial::IBinaryFile ibinary("fichou");
 		ibinary>>lecture;
-		//printf("lecture = %ld\n",lecture);
 	}
 	EXPECT_EQ(lecture,ecriture);
 }
@@ -760,7 +723,6 @@ TEST(Read, bool_false){
 	{
 		serial::IBinaryFile ibinary("ficCar");
 		ibinary>>boolLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(boolEntree, boolLu);
 }
@@ -775,7 +737,6 @@ TEST(Read, bool_true){
 	{
 		serial::IBinaryFile ibinary("ficCar");
 		ibinary>>boolLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(boolEntree, boolLu);
 }
@@ -793,7 +754,6 @@ TEST(Read, char_Maj){
 	{
 		serial::IBinaryFile ibinary("ficCar");
 		ibinary>>charLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(charEntree, charLu);
 }
@@ -808,7 +768,6 @@ TEST(Read, char_Min){
 	{
 		serial::IBinaryFile ibinary("ficCar");
 		ibinary>>charLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(charEntree, charLu);
 }
@@ -823,10 +782,10 @@ TEST(Read, char_Spe){
 	{
 		serial::IBinaryFile ibinary("ficCar");
 		ibinary>>charLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(charEntree, charLu);
 }
+
 											/************************************
 											 * 				STRING				*
 											 ************************************/
@@ -840,7 +799,6 @@ TEST(Read, chaine_superCourte){
 	{
 		serial::IBinaryFile ibinary("ficString");
 		ibinary>>chaineLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(chaineEntree, chaineLu);
 }
@@ -855,7 +813,6 @@ TEST(Read, chaine_courte){
 	{
 		serial::IBinaryFile ibinary("ficString");
 		ibinary>>chaineLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(chaineEntree, chaineLu);
 }
@@ -870,11 +827,225 @@ TEST(Read, chaine_longue){
 	{
 		serial::IBinaryFile ibinary("ficString");
 		ibinary>>chaineLu;
-		//printf("CharLu = %c\n",CharLu);
 	}
 	EXPECT_EQ(chaineEntree, chaineLu);
 }
 
+											/************************************
+											 * 				VECTOR				*
+											 ************************************/
+TEST(Read, vector_uint8){
+	std::vector<uint8_t> vectorEntree = {1,2,3};
+	std::vector<uint8_t> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_int8){
+	std::vector<int8_t> vectorEntree = {42,-2,3};
+	std::vector<int8_t> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_uint64){
+	std::vector<uint64_t> vectorEntree = {11111111111111111, 2222222222, 3333333333, 0};
+	std::vector<uint64_t> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_int64){
+	std::vector<int64_t> vectorEntree = {424242424242,-2222222222,33333333333, 0, -0};
+	std::vector<int64_t> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_char){
+	std::vector<char> vectorEntree = {'4','$','x'};
+	std::vector<char> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_string){
+	std::vector<std::string> vectorEntree = {"xXxGrosB0l0$$3xXx","123456789","J'adore l'Iran dans 20-30 semaines y en aura plus !"};
+	std::vector<std::string> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+TEST(Read, vector_bool){
+	std::vector<bool> vectorEntree = {true, false, true};
+	std::vector<bool> vectorLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << vectorEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>vectorLu;
+	}
+	EXPECT_EQ(vectorEntree, vectorLu);
+}
+
+											/************************************
+											 * 				ARRAY				*
+											 ************************************/
+TEST(Read, array_uint8){
+	std::array<uint8_t, 3> arrayEntree = {1,2,3};
+	std::array<uint8_t, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_int8){
+	std::array<int8_t, 3> arrayEntree = {1,-2,0};
+	std::array<int8_t, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_string){
+	std::array<std::string, 3> arrayEntree = {"Salut les bros c'est LRB","J'aime les patates","Kek"};
+	std::array<std::string, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_char){
+	std::array<char, 3> arrayEntree = {'r','[','8'};
+	std::array<char, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_bool){
+	std::array<bool, 3> arrayEntree = {true,false,false};
+	std::array<bool, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_uint64){
+	std::array<uint64_t, 3> arrayEntree = {11111111111111,2222222222,3333333333};
+	std::array<uint64_t, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
+
+TEST(Read, array_int64){
+	std::array<int64_t, 3> arrayEntree = {11111111111,-22222222222,-0};
+	std::array<int64_t, 3> arrayLu;
+  	{
+		serial::OBinaryFile obinary("ficTemplate");
+		obinary << arrayEntree;
+ 	}
+	{
+		serial::IBinaryFile ibinary("ficTemplate");
+		ibinary>>arrayLu;
+	}
+	for(size_t ln = 0; ln < arrayEntree.size(); ln++){
+		EXPECT_EQ(arrayEntree[ln], arrayLu[ln]);
+	}
+}
 int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

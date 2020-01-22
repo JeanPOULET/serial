@@ -110,10 +110,10 @@ namespace serial {
   OBinaryFile& operator<<(OBinaryFile& file, const std::vector<T>& x) {
     uint32_t lg = static_cast<uint32_t>(x.size());
     file<<lg;
-    T v;
+    T var;
     for(uint32_t i=0; i<lg;++i){
-      v = x[i];
-      file<<v;
+      var = x[i];
+      file<<var;
 
     }
     return file;
@@ -121,6 +121,15 @@ namespace serial {
 
   template<typename T, std::size_t N>
   OBinaryFile& operator<<(OBinaryFile& file, const std::array<T,N>& x) {
+    uint32_t lg = static_cast<uint32_t>(x.size());
+    file<<lg;
+    T var;
+    for(uint32_t i=0; i<lg;++i){
+      var = x[i];
+      file<<var;
+
+    }
+
     return file;
   }
 
@@ -164,6 +173,14 @@ namespace serial {
 
   template<typename T, std::size_t N>
   IBinaryFile& operator>>(IBinaryFile& file, std::array<T, N>& x) {
+    uint32_t lg = x.size();
+
+    T tmp;
+    for(uint32_t i = 0 ; i < lg ; ++i){
+      file>>tmp;
+      x.fill(tmp);
+    }
+
     return file;
   }
 
