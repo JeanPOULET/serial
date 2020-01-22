@@ -47,10 +47,6 @@ namespace serial {
     }
 
     OBinaryFile& operator<<(OBinaryFile& file, uint16_t x){
-<<<<<<< HEAD
-=======
-        
->>>>>>> b6e8926534e9a8358923da381f734ae7f4e0adb9
         return file;
     }
 

@@ -32,11 +32,11 @@ TEST(Read, int8){
   }
 }
 TEST(Output, char){
-	char charEntré ='V'; 
+	char charEntree ='V'; 
 	char CharLu;
   	{
 		serial::OBinaryFile obinary("ficCar");
-		obinary << charEntré;
+		obinary << charEntree;
  	}
 	{
 		serial::IBinaryFile ibinary("ficCar");
@@ -44,7 +44,7 @@ TEST(Output, char){
 		//printf("CharLu = %c\n",CharLu);
 	}
 
-	EXPECT_EQ(charEntré, CharLu);
+	EXPECT_EQ(charEntree, CharLu);
 }
 
 int main(int argc, char* argv[]) {
