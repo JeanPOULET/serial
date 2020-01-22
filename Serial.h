@@ -151,6 +151,7 @@ namespace serial {
   template<typename T>
   OBinaryFile& operator<<(OBinaryFile& file, const std::set<T>& x) {
     uint32_t lg = static_cast<uint32_t>(x.size());
+    file<<lg;
     T var;
     for(auto i=x.begin();i!=x.end();++i){
       var = *i;
